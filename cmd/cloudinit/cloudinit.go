@@ -38,6 +38,7 @@ import (
 	"github.com/coreos/coreos-cloudinit/pkg"
 	"github.com/coreos/coreos-cloudinit/system"
 	"github.com/rancherio/os/cmd/cloudinit/hostname"
+	userConf "github.com/rancherio/os/cmd/cloudinit/user"
 	rancherNetwork "github.com/rancherio/os/cmd/network"
 	rancherConfig "github.com/rancherio/os/config"
 	"github.com/rancherio/os/util"
@@ -315,6 +316,9 @@ func executeCloudConfig() error {
 		if user.Name == "" {
 			continue
 		}
+
+		userConf.AddUser(user.Name, user.GECOS, user.Homedir, user.PasswordHash, user.NoCreateHome, user.Groups, user.System)
+
 		if len(user.SSHAuthorizedKeys) > 0 {
 			authorizeSSHKeys(user.Name, user.SSHAuthorizedKeys, sshKeyName)
 		}

@@ -216,6 +216,7 @@ func NewConfig() *Config {
 				VolumesFrom: []string{
 					"command-volumes",
 					"system-volumes",
+					"user-volumes",
 				},
 			},
 			"network": {
@@ -250,6 +251,7 @@ func NewConfig() *Config {
 				VolumesFrom: []string{
 					"command-volumes",
 					"system-volumes",
+					"user-volumes",
 				},
 			},
 			"ntp": {
